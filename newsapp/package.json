@@ -1,0 +1,23 @@
+{
+  "name": "newsapp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^37.1.0",
+    "@ckeditor/ckeditor5-vue": "^5.1.0",
+    "axios": "^1.4.0",
+    "sweetalert2": "^11.7.5",
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.1",
+    "vite": "^4.3.4"
+  }
+}
