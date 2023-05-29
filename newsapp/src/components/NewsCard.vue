@@ -20,13 +20,16 @@
           .trim()
           .replace(/\s+/g, '-');
       },
+      handleImageError(event){
+        event.target.src = '/brokenImg.png';
+      }
     }
   };
 </script>
 
 <template>
     <RouterLink style="text-decoration: none;" :to="`/${article.slug}`" class="card">
-      <img :src="article.urlToImage" alt="Gambar Berita">
+      <img :src="article.urlToImage" @error="handleImageError" alt="Gambar Berita">
       <h2>{{ article.title }}</h2>
       <p>{{ article.description }}</p>      
     </RouterLink>  

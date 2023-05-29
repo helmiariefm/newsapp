@@ -16,7 +16,11 @@
       const route = useRoute();
       const slug = computed(() => route.params.slug);
       const news = ref(null);
-      const loading = ref(false);
+      const loading = ref(false);     
+      
+      const handleImageError = () => {        
+        news.value.urlToImage = '/brokenImg.png';;
+      };
 
       loading.value = true;
       store
@@ -29,6 +33,7 @@
       return {
         news,
         loading,
+        handleImageError
       };
     },
     mounted() {
@@ -46,12 +51,10 @@
     <div class="header">
       <h1>{{ news.title }}</h1>
       <div class="edit-container">
-        <Button :to="`/edit-news/${news.slug}`" class="edit">
-          Edit News
-        </Button>
+        <Button :to="`/edit-news/${news.slug}`" class="edit" buttonText="Edit News"/>
       </div>
     </div>
-    <img :src="news.urlToImage" alt="News Image" class="news-image">
+    <img :src="news.urlToImage" @error="handleImageError" alt="News Image" class="news-image">
     <p>{{ news.content }}</p>
     <div class="back-button">
       <RouterLink to="/">Back to News</RouterLink>

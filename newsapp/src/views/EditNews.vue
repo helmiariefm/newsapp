@@ -70,8 +70,8 @@
         <ckeditor v-model="news.content" :editor="editor" :config="editorConfig" id="ck"></ckeditor>
       </div>
       <div class="button-group">
-        <Button type="submit" class="save-button">Save</Button>
-        <Button :to="`/${news.slug}`" class="cancel-button">Cancel</Button>
+        <Button type="submit" saveButton buttonText="Save"/>
+        <Button :to="`/${news.slug}`" cancelButton buttonText="Cancel"/>
       </div>
     </form>
   </div>

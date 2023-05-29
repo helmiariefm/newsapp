@@ -1,6 +1,6 @@
 <template>
     <button :class="buttonClass" @click="handleClick">
-      <slot></slot>
+      {{ buttonText }}
     </button>
 </template>
   
@@ -19,6 +19,10 @@
         type: Boolean,
         default: false,
       },
+      buttonText: {
+        type: String,
+        required: true,
+      }    
     },
     computed: {
       buttonClass() {
