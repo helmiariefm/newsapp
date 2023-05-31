@@ -1,5 +1,5 @@
-<script setup>
-  import { RouterLink, RouterView } from 'vue-router'
+<script>
+  import { RouterView, RouterLink } from 'vue-router'
   import 'sweetalert2/dist/sweetalert2.css';
 </script>
 

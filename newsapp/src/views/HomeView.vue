@@ -19,7 +19,7 @@
       fetchNews() {
         this.$store.dispatch('news/fetchNews');
       },
-    }    
+    }
   }
 </script>
 

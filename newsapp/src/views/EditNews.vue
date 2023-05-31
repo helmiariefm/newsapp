@@ -1,79 +1,17 @@
 <script>
-  import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-  import { useRoute, useRouter } from 'vue-router';
-  import { computed, ref } from 'vue';
-  import { useStore } from 'vuex';
-  import Swal from 'sweetalert2/dist/sweetalert2.js';
-  import Button from '../components/Button.vue';
+  import Form from '../components/Form.vue';  
 
-  export default {
-    data() {
-      return {
-        news: {
-          slug: '',
-          image: '',
-          title: '',
-          content: '',
-        },
-        editor: ClassicEditor,
-        editorConfig: {},
-      };
-    },
-    methods: {
-      saveNews() {        
-        Swal.fire({
-          title: 'News Saved',
-          text: 'The news has been successfully saved.',
-          icon: 'success',
-          confirmButtonText: 'OK'
-        }).then(() => {          
-          this.$router.push(`/${this.news.slug}`);
-        });
-        console.log('Saved!');
-      },
-    },
-    mounted() {
-      const route = useRoute();
-      const store = useStore();
-      const router = useRouter();
-
-      const slug = route.params.slug;
-      
-      const existingNews = computed(() => store.getters['news/getNewsBySlug'](slug));
-
-      if (existingNews.value) {
-        this.news = { ...existingNews.value };
-      } else {        
-        router.push('/');
-      }
-    },
+  export default{
     components: {
-      Button
+      Form
     }
-  };
+  }
 </script>
 
 <template>
   <div class="edit-news">
     <h1>Edit Berita</h1>
-    <form @submit.prevent="saveNews">
-      <div class="form-group">
-        <label for="title">Judul:</label>
-        <input type="text" v-model="news.title" id="title" placeholder="Judul Berita" />
-      </div>
-      <div class="form-group">
-        <label for="image">Gambar:</label>
-        <input type="text" v-model="news.urlToImage" id="image" placeholder="URL Gambar" />
-      </div>
-      <div class="form-group">
-        <label for="content">Isi Berita:</label>
-        <ckeditor v-model="news.content" :editor="editor" :config="editorConfig" id="ck"></ckeditor>
-      </div>
-      <div class="button-group">
-        <Button type="submit" saveButton buttonText="Save"/>
-        <Button :to="`/${news.slug}`" cancelButton buttonText="Cancel"/>
-      </div>
-    </form>
+    <Form/>
   </div>
 </template>
   

@@ -6,7 +6,9 @@ const api = axios.create({
 
 export default {
   getNews() {
-    return api.get('/everything?q=esports&apiKey=bbe05b4256b1449c810ecf49bec3f943');
+    return api.get('/everything?q=esports&apiKey=262ee1bf10154360b8b5c8fcc7027be5');
+    // 262ee1bf10154360b8b5c8fcc7027be5 android
+    // bbe05b4256b1449c810ecf49bec3f943 helmi
   },
   getNewsBySlug(slug) {
     return api.get(`/news/${slug}`);
